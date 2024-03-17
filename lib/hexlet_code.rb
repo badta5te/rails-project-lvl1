@@ -7,7 +7,9 @@ module HexletCode
 
   class Error < StandardError; end
 
-  def self.build(name, attributes = {})
-    HexletCode::Tag.build(name, attributes)
+  def self.form_for(_, **options)
+    url = options[:url] || '#'
+
+    Tag.build('form', action: url, method: 'post')
   end
 end
