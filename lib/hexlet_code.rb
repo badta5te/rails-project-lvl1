@@ -10,14 +10,15 @@ module HexletCode
   def self.form_for(model, **options)
     @model = model
     @inputs = []
-    url = options[:url] || '#'
+    action = options[:action] || '#'
+    method = options[:method] || 'post'
 
     form_content = if block_given?
                      yield self
                      @inputs.join
                    end
 
-    Tag.build('form', action: url, method: 'post') { form_content }
+    Tag.build('form', action:, method:) { form_content }
   end
 
   def self.input(name, **options)
