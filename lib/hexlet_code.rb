@@ -24,7 +24,7 @@ module HexletCode
     @inputs ||= []
 
     value = @model.public_send(name)
-    label_tag = Tag.build('label', for: name) { options.delete(:label) || name }
+    label_tag = Tag.build('label', for: name) { name.capitalize }
 
     input_field = if options[:as] == :text
                     options = handle_as_text(options)

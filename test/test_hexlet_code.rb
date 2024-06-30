@@ -30,9 +30,9 @@ class TestHexletCode < Minitest::Test
     user = User.new name: 'rob'
     resulted_html = [
       '<form action="#" method="post">',
-      '<label for="name">name</label>',
+      '<label for="name">Name</label>',
       '<input name="name" type="text" value="rob">',
-      '<label for="job">job</label>',
+      '<label for="job">Job</label>',
       '<input name="job" type="text" value="">',
       '</form>'
     ].join
@@ -48,9 +48,9 @@ class TestHexletCode < Minitest::Test
     user = User.new name: 'rob', job: 'hexlet'
     resulted_html = [
       '<form action="#" method="post">',
-      '<label for="name">name</label>',
+      '<label for="name">Name</label>',
       '<input name="name" type="text" value="rob" class="my-test-class">',
-      '<label for="job">job</label>',
+      '<label for="job">Job</label>',
       '<textarea name="job" cols="20" rows="10">hexlet</textarea>',
       '</form>'
     ].join
@@ -66,9 +66,9 @@ class TestHexletCode < Minitest::Test
     user = User.new name: 'rob', job: 'hexlet'
     resulted_html = [
       '<form action="#" method="post">',
-      '<label for="name">name</label>',
+      '<label for="name">Name</label>',
       '<input name="name" type="text" value="rob">',
-      '<label for="job">job</label>',
+      '<label for="job">Job</label>',
       '<input name="job" type="text" value="hexlet">',
       '</form>'
     ].join
@@ -84,9 +84,9 @@ class TestHexletCode < Minitest::Test
     user = User.new name: 'rob'
     resulted_html = [
       '<form action="#" method="post">',
-      '<label for="name">name</label>',
+      '<label for="name">Name</label>',
       '<input name="name" type="text" value="rob">',
-      '<label for="job">job</label>',
+      '<label for="job">Job</label>',
       '<input name="job" type="text" value="">',
       '<input type="submit" value="Wow">',
       '</form>'
