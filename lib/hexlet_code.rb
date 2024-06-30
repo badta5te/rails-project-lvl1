@@ -12,24 +12,33 @@ module HexletCode
     @inputs = []
     url = options[:url] || '#'
 
-    Tag.build('form', action: url, method: 'post') do
-      if block_given?
-        yield self
-        @inputs.join
-      end
-    end
+    form_content = if block_given?
+                     yield self
+                     @inputs.join
+                   end
+
+    Tag.build('form', action: url, method: 'post') { form_content }
   end
 
   def self.input(name, **options)
     @inputs ||= []
 
     value = @model.public_send(name)
-    if options[:as] == :text
-      options = handle_as_text(options)
-      @inputs << Tag.build('textarea', name:, **options) { value }
-    else
-      @inputs << Tag.build('input', name:, type: 'text', value:, **options)
-    end
+    label_tag = Tag.build('label', for: name) { options.delete(:label) || name }
+
+    input_field = if options[:as] == :text
+                    options = handle_as_text(options)
+                    Tag.build('textarea', name:, **options) { value }
+                  else
+                    Tag.build('input', name:, type: 'text', value:, **options)
+                  end
+
+    @inputs << "#{label_tag}#{input_field}"
+  end
+
+  def self.submit(value = 'Save')
+    @inputs ||= []
+    @inputs << Tag.build('input', type: 'submit', value:)
   end
 
   def self.handle_as_text(options)
