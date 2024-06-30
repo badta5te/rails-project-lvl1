@@ -18,7 +18,7 @@ class TestHexletCode < Minitest::Test
   def test_form_generate
     user = User.new name: 'rob'
 
-    form_with_url = HexletCode.form_for user, action: '/users'
+    form_with_url = HexletCode.form_for user, url: '/users'
     assert_equal form_with_url, '<form action="/users" method="post"></form>'
 
     form_without_url = HexletCode.form_for user

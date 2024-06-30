@@ -10,7 +10,7 @@ module HexletCode
   def self.form_for(model, **options)
     @model = model
     @inputs = []
-    action = options[:action] || '#'
+    action = options[:url] || '#'
     method = options[:method] || 'post'
 
     form_content = if block_given?
