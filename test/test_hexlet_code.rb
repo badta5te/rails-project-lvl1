@@ -99,5 +99,17 @@ class TestHexletCode < Minitest::Test
     end
     assert_equal form, resulted_html
   end
+
+  def test_form_with_class
+    user = User.new name: 'rob'
+    resulted_html = [
+      '<form action="/profile" method="get" class="hexlet-form">',
+      '<input type="submit" value="Save">',
+      '</form>'
+    ].join
+
+    form = HexletCode.form_for user, url: '/profile', method: 'get', class: 'hexlet-form', &:submit
+    assert_equal form, resulted_html
+  end
   # rubocop:enable Metrics/MethodLength
 end
