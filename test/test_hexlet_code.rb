@@ -25,7 +25,6 @@ class TestHexletCode < Minitest::Test
     assert_equal form_without_url, '<form action="#" method="post"></form>'
   end
 
-  # rubocop:disable Metrics/MethodLength
   def test_with_block
     user = User.new name: 'rob'
     resulted_html = [
@@ -111,5 +110,4 @@ class TestHexletCode < Minitest::Test
     form = HexletCode.form_for user, url: '/profile', method: 'get', class: 'hexlet-form', &:submit
     assert_equal form, resulted_html
   end
-  # rubocop:enable Metrics/MethodLength
 end
